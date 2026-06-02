@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: santex-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+    expose:
+      - "3000"
+    networks:
+      - santex
+
+  caddy:
+    image: mirror.gcr.io/library/caddy:2-alpine
+    container_name: santex-caddy
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - santex
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  santex:
+    driver: bridge

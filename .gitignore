@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# production bundles and local deploy archives
+deploy/*.tar.gz
+
+# logs
+*.log
+.next-dev*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# environment
+.env
+.env*.local
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
