@@ -45,9 +45,9 @@ export function MobileNav() {
   }, [open]);
 
   const menu = (
-    <div className="fixed inset-0 z-[2147483647] min-h-[100dvh] overflow-hidden bg-[#070A0F] text-light lg:hidden">
+    <div className="fixed inset-0 z-[2147483647] h-[100dvh] overflow-hidden bg-[#070A0F] text-light lg:hidden">
       <div className="absolute inset-0 bg-[#070A0F]" />
-      <div className="relative flex min-h-[100dvh] flex-col">
+      <div className="relative flex h-full min-h-0 flex-col">
         <div className="flex h-[84px] shrink-0 items-center justify-between border-b border-white/10 bg-[#070A0F] px-4 pt-[env(safe-area-inset-top)]">
           <Image
             src="/images/logo-engineering-systems.png"
@@ -66,7 +66,7 @@ export function MobileNav() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto overscroll-contain bg-[#070A0F] px-4 py-5 pb-[calc(24px+env(safe-area-inset-bottom))]">
+        <div className="min-h-0 flex-1 touch-pan-y overflow-y-scroll overscroll-contain bg-[#070A0F] px-4 py-5 pb-[calc(32px+env(safe-area-inset-bottom))] [-webkit-overflow-scrolling:touch]">
           <div className="grid gap-2.5">
             {navItems.map((item) => (
               <Link
